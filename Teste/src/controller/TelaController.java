@@ -79,47 +79,13 @@ public class TelaController implements Initializable{
 				return;
 			}
 			
-			System.out.println("Config: " + config);
-			
 			String valorDeCambio = rem.valorDeConversao(config);
 			
-			System.out.println("valorDeCambio: " + valorDeCambio);
-			
 			String novoValor = rem.calcularNovoValor(valorInput, valorDeCambio);
-			
-			System.out.println("novoValor: " + novoValor);
 			
 			valorsaida.setText(novoValor);
 		}
     }
-	
-	public Double realizarConversao(String tipoMoeda1, String tipoMoeda2, double valor) {
-		
-		// Se as moedas forem iguais:
-		if (tipoMoeda1.equals(tipoMoeda2)) {
-			alertaErro.setContentText("Escolha moedas diferentes!");
-			alertaErro.showAndWait();
-			return null;
-		
-		// Se forem diferentes:
-		} else {
-			
-			
-			if (tipoMoeda1.equals("Real") && tipoMoeda2.equals("Dolar")) {
-				System.out.println("real x dolar");
-				
-				valor *= 0.20;
-				
-				
-			}
-			
-			
-		}
-		
-		
-		return null;
-	}
-	
 	
 	public void getMoeda1(ActionEvent event) {
 		moeda1.getValue();
