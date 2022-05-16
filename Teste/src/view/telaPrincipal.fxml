@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="root" stylesheets="@../cssFiles/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaController">
+   <children>
+      <Pane layoutY="32.0" prefHeight="468.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+         <children>
+            <Pane layoutX="4.0" layoutY="6.0" prefHeight="456.0" prefWidth="392.0" styleClass="mainPane" stylesheets="@../cssFiles/style.css">
+               <children>
+                  <Pane layoutX="28.0" layoutY="28.0" prefHeight="96.0" prefWidth="337.0" styleClass="highlight" stylesheets="@../cssFiles/style.css">
+                     <children>
+                        <TextField fx:id="valorEntrada" alignment="CENTER" layoutX="88.0" layoutY="30.0" prefHeight="37.0" prefWidth="161.0" promptText="Digite aqui o valor" styleClass="transparent" stylesheets="@../cssFiles/style.css">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="28.0" layoutY="377.0" prefHeight="59.0" prefWidth="337.0" styleClass="highlight" stylesheets="@../cssFiles/style.css">
+                     <children>
+                        <Label fx:id="valorsaida" alignment="CENTER" layoutX="88.0" layoutY="11.0" prefHeight="37.0" prefWidth="161.0" text="0.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button fx:id="botaoCalcular" layoutX="124.0" layoutY="242.0" mnemonicParsing="false" onAction="#mostrarResultado" prefHeight="59.0" prefWidth="145.0" stylesheets="@../cssFiles/style.css" text="Calcular">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass></Button>
+                  <ChoiceBox fx:id="moeda1" layoutX="28.0" layoutY="194.0" prefHeight="25.0" prefWidth="138.0">
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass></ChoiceBox>
+                  <Label layoutX="87.0" layoutY="156.0" text="De">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" layoutY="156.0" text="Para">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="moeda2" layoutX="227.0" layoutY="194.0" prefHeight="25.0" prefWidth="138.0">
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass></ChoiceBox>
+                  <Label layoutX="159.0" layoutY="344.0" text="Resultado">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="87.0" prefHeight="37.0" prefWidth="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imgClose" fitHeight="24.0" fitWidth="24.0" layoutX="350.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/close.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="46.0" layoutY="8.0" text="Conversor de moeda" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="iconeApp" fitHeight="24.0" fitWidth="24.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/money_with_wings.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
