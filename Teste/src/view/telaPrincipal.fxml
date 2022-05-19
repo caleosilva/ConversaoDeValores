@@ -32,7 +32,7 @@
                   </Pane>
                   <Pane layoutX="28.0" layoutY="377.0" prefHeight="59.0" prefWidth="337.0" styleClass="highlight" stylesheets="@../cssFiles/style.css">
                      <children>
-                        <Label fx:id="valorsaida" alignment="CENTER" layoutX="88.0" layoutY="11.0" prefHeight="37.0" prefWidth="161.0" text="0.0">
+                        <Label fx:id="valorsaida" alignment="CENTER" layoutX="88.0" layoutY="11.0" prefHeight="37.0" prefWidth="161.0" text="0.0" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -52,12 +52,12 @@
                         <String fx:value="search-box" />
                         <String fx:value="shadow" />
                      </styleClass></ChoiceBox>
-                  <Label layoutX="87.0" layoutY="156.0" text="De">
+                  <Label layoutX="87.0" layoutY="156.0" text="De" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="280.0" layoutY="156.0" text="Para">
+                  <Label layoutX="280.0" layoutY="156.0" text="Para" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -67,7 +67,7 @@
                         <String fx:value="search-box" />
                         <String fx:value="shadow" />
                      </styleClass></ChoiceBox>
-                  <Label layoutX="159.0" layoutY="344.0" text="Resultado">
+                  <Label layoutX="159.0" layoutY="344.0" text="Resultado" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
