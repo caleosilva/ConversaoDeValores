@@ -22,7 +22,7 @@ public class RelacoesEntreMoedas {
 	/**
 	 * Método responsável por burcar em uma API o valor de conversão entre duas moedas distintas.
 	 * 
-	 * @param Moedas As duas moedas passadas escolhidas pelo usuário.
+	 * @param Moedas As duas moedas escolhidas pelo usuário.
 	 * @return O valor de conversão ou null caso não encontre.
 	 */
 	public String valorDeConversao(String moedas) {
