@@ -25,7 +25,7 @@ public class RelacoesEntreMoedas {
 	 * @param Moedas As duas moedas escolhidas pelo usuário.
 	 * @return O valor de conversão ou null caso não encontre.
 	 */
-	public String valorDeConversao(String moedas) {
+	public String valorDeConversaoDireta(String moedas) {
 		
 		String urlParaChamada = webService + moedas;
 
@@ -48,7 +48,7 @@ public class RelacoesEntreMoedas {
             
             for(int i = 0; i < y.length; i++) {
             	
-            	if (y[i].contains("high")) {
+            	if (y[i].contains("bid")) {
             		
             		String[] z = y[i].split(":");
             		valor = z[1].replace("\"", "");
@@ -57,15 +57,101 @@ public class RelacoesEntreMoedas {
             
             return valor;
         } catch (Exception e) {
-        	alertaErro.setContentText("A \"API\" utilizada para captar os dados não retornou o valor "
-        			+ "da conversão entre as moedas escolhidas. Por gentileza "
-        			+ "tente novamente mais tarde!");
-			alertaErro.showAndWait();
+        	return null;
         }
-        
-		return urlParaChamada;
 	}
 	
+	/**
+	 * Método responsável por burcar em uma API o valor de conversão entre uma moeda e o dolar.
+	 * 
+	 * @param Moedas As duas moedas escolhidas pelo usuário.
+	 * @return O valor de conversão ou null caso não encontre.
+	 */
+	public String moeda1ParaDolar(String moedas) {
+		
+		String[] moedasSeparadas = moedas.split("-");
+		String moeda1ParaDolar = moedasSeparadas[0] + "-USD";
+         
+   
+		String urlParaChamada = webService + moeda1ParaDolar;
+
+        try {
+        	
+            URL url = new URL(urlParaChamada);
+            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+
+            if (conexao.getResponseCode() != codigoSucesso)
+                throw new RuntimeException("HTTP error code : " + conexao.getResponseCode());
+            
+            
+            BufferedReader resposta = new BufferedReader(new InputStreamReader((conexao.getInputStream())));
+
+            String valor = null;
+            
+            // Passando a reposta para String e filtrando o valor;
+            String x = resposta.lines().collect(Collectors.joining());
+            String[] y = x.split(",");
+            
+            for(int i = 0; i < y.length; i++) {
+            	
+            	if (y[i].contains("bid")) {
+            		
+            		String[] z = y[i].split(":");
+            		valor = z[1].replace("\"", "");
+            	}
+            }
+            
+            return valor;
+        } catch (Exception e) {
+        	return null;
+        }
+	}
+	
+	/**
+	 * Método responsável por burcar em uma API o valor de conversão entre o dolar e uma moeda.
+	 * 
+	 * @param Moedas As duas moedas escolhidas pelo usuário.
+	 * @return O valor de conversão ou null caso não encontre.
+	 */
+	public String dolarParaMoeda2(String moedas) {
+		
+		String[] moedasSeparadas = moedas.split("-");
+		String dolarParaMoeda2 = "USD-" + moedasSeparadas[1];
+		
+		String urlParaChamada = webService + dolarParaMoeda2;
+
+        try {
+        	
+            URL url = new URL(urlParaChamada);
+            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+
+            if (conexao.getResponseCode() != codigoSucesso)
+                throw new RuntimeException("HTTP error code : " + conexao.getResponseCode());
+            
+            
+            BufferedReader resposta = new BufferedReader(new InputStreamReader((conexao.getInputStream())));
+
+            String valor = null;
+            
+            // Passando a reposta para String e filtrando o valor;
+            String x = resposta.lines().collect(Collectors.joining());
+            String[] y = x.split(",");
+            
+            for(int i = 0; i < y.length; i++) {
+            	
+            	if (y[i].contains("bid")) {
+            		
+            		String[] z = y[i].split(":");
+            		valor = z[1].replace("\"", "");
+            	}
+            }
+            
+            return valor;
+        } catch (Exception e) {
+        	return null;
+        }
+	}
+
 	/**
 	 * Método responsável por formatar as duas moedas escolhidas pelo usuário de tal modo que a API
 	 * saiba buscar através deles.
@@ -129,7 +215,7 @@ public class RelacoesEntreMoedas {
 	 * @param valorDeCambio Valor informado pela API.
 	 * @return String referente ao novo valor calculado.
 	 */
-	public String calcularNovoValor(String valorInicial, String valorDeCambio) {
+	public String calcularNovoValorEFormatar(String valorInicial, String valorDeCambio) {
 		
 		try {
 			
@@ -139,6 +225,24 @@ public class RelacoesEntreMoedas {
 			Double valorFinal = (v1 * v2);
 			
 			String valorFinalStr = String.format("%.2f",valorFinal);
+			
+			return valorFinalStr;
+			
+		} catch(NumberFormatException NFE) {
+			return null;
+		}
+	}
+	
+	public String calcularNovoValor(String valorInicial, String valorDeCambio) {
+		
+		try {
+			
+			Double v1 = Double.parseDouble(valorInicial);
+			Double v2 = Double.parseDouble(valorDeCambio);
+			
+			Double valorFinal = (v1 * v2);
+			
+			String valorFinalStr = String.valueOf(valorFinal);
 			
 			return valorFinalStr;
 			
@@ -167,6 +271,5 @@ public class RelacoesEntreMoedas {
 		}
 		return null;
 	}
-	
 	
 }
