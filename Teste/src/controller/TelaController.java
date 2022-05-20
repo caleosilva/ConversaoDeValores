@@ -91,30 +91,23 @@ public class TelaController implements Initializable{
 				// Recebendo o valor de câmbio
 				String valorDeCambio = rem.valorDeConversaoDireta(config);
 				
-				// Se não for possível converter diretamente:
+				// Se não for possível converter diretamente (passa para dolar e depois para a outra)
 				if (valorDeCambio == null) {
-					System.out.println("Do novo jeito\n");
 					
 					// Convertendo indiretamente:
 					String valorDeCambio1 = rem.moeda1ParaDolar(config);
-					System.out.println("valorDeCambio1: " + valorDeCambio1);
 					
 					String valorDeCambio2 = rem.dolarParaMoeda2(config);
-					System.out.println("valorDeCambio2: " + valorDeCambio2);
 					
 					String valorApoio = rem.calcularNovoValor(valorInput, valorDeCambio1);
-					System.out.println("valorApoio1: " + valorApoio);
 					
 					//valorApoio = rem.valorValido(valorApoio);
 					valorApoio = valorApoio.replace(",", ".");
-					System.out.println("valorApoio1Formatado: " + valorApoio);
 					
 					novoValor = rem.calcularNovoValorEFormatar(valorApoio, valorDeCambio2);
-					System.out.println("novoValor: " + novoValor);
-					
+				
+				// Convertendo diretamente:
 				} else {
-					
-					System.out.println("Direto");
 					
 					// Calculando o novo valor
 					novoValor = rem.calcularNovoValorEFormatar(valorInput, valorDeCambio);
@@ -129,13 +122,9 @@ public class TelaController implements Initializable{
 					
 				}
 				
-				
-				
 				valorsaida.setText(novoValor);
 				
 			}
-			
-			
 			
 		}
     }
